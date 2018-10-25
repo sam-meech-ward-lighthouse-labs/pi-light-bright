@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Light Bright</title>
+</head>
+<body>
+
+  <button class="red">red</button>
+  <button class="green">green</button>
+  <button class="blue">blue</button>
+
+  <script>
+     function sendHTTPRequest(path) {
+        console.log("sendHTTPRequest", path);
+        const HTTP = new XMLHttpRequest();
+        const url = 'http://192.168.88.118:8833/';
+        HTTP.open("POST", url+path);
+        HTTP.onreadystatechange = function() {
+          console.log("done", this.readyState, this.status);
+        }
+        HTTP.send();
+      }
+
+      document.querySelector('.red').addEventListener('click', () => {
+        sendHTTPRequest("red");
+      });
+      document.querySelector('.green').addEventListener('click', () => {
+        sendHTTPRequest("green");
+      });
+      document.querySelector('.blue').addEventListener('click', () => {
+        sendHTTPRequest("blue");
+      });
+  </script>
+  
+</body>
+</html>
